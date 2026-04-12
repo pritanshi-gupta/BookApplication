@@ -17,22 +17,19 @@ public class BookController {
 
     private final BookService bookservice;
 
-    public BookController(BookService bookService){
-        this.bookService=bookService;
+    public BookController(BookService bookService) {
+        this.bookService = bookService;
     }
-
-
 
 
     @PostMapping("/addBook")
-    public ResponseEntity addBook(@RequestBody Book book){
+    public ResponseEntity addBook(@RequestBody Book book) {
 
     }
-    @GetMapping("/testing")
-    public ResponseEntity addTestingFunction){
-        return ResponseEntity.ok("testin");
+}
 
-    }
+
+
     
 
-}
+
