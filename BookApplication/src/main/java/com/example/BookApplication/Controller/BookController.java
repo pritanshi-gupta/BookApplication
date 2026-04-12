@@ -28,5 +28,11 @@ public class BookController {
     public ResponseEntity addBook(@RequestBody Book book){
 
     }
+    @GetMapping("/testing")
+    public ResponseEntity addTestingFunction){
+        return ResponseEntity.ok("testin");
+
+    }
+    
 
 }
