@@ -4,10 +4,7 @@ import com.example.BookApplication.Entity.Book;
 import com.example.BookApplication.Service.BookService;
 import org.springframework.http.ResponseEntity;
 
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/book/v1")
@@ -21,7 +18,24 @@ public class BookController {
     }
 
     @PostMapping("/addBook")
-    public ResponseEntity addBook(@RequestBody Book book) {
-        return ResponseEntity.ok("Book added successfully");
+    public ResponseEntity<Book> addBook(@RequestBody Book book) {
+
+
+        return ResponseEntity.ok(bookService.addBook(book));
     }
+    @GetMapping("/getBook/{bookName}")
+    public ResponseEntity<Book> getBookByName (@RequestParam("bookName") String name){
+        bookService.getBookByName(name);
+        final Book bookByName = bookService.getBookByName(name);
+        return ResponseEntity.ok(bookByName);
+
+    }
+
+
+    @GetMapping("/testing")
+    public String testFunction(){
+        return "testing string";
+    }
+
+
 }
