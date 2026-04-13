@@ -12,24 +12,16 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequestMapping("/book/v1")
 
-
 public class BookController {
 
-    private final BookService bookservice;
+    private final BookService bookService;
 
     public BookController(BookService bookService) {
         this.bookService = bookService;
     }
 
-
     @PostMapping("/addBook")
     public ResponseEntity addBook(@RequestBody Book book) {
-
+        return ResponseEntity.ok("Book added successfully");
     }
 }
-
-
-
-    
-
-

@@ -12,13 +12,9 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 
-
-
 public class Book {
     @Id
     @GeneratedValue
-
-
     private Integer id;
     private String title;
     private String author;
