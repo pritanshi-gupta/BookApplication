@@ -19,7 +19,7 @@ public class Book {
     @GeneratedValue
 
 
-    private integer id;
+    private Integer id;
     private String title;
     private String author;
     private String genre;
