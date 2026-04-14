@@ -24,11 +24,17 @@ public class BookController {
         return ResponseEntity.ok(bookService.addBook(book));
     }
     @GetMapping("/getBook/{bookName}")
-    public ResponseEntity<Book> getBookByName (@RequestParam("bookName") String name){
+    public ResponseEntity<Book> getBookByName (@PathVariable("bookName") String name){
         bookService.getBookByName(name);
         final Book bookByName = bookService.getBookByName(name);
         return ResponseEntity.ok(bookByName);
 
+    }
+
+    @PutMapping("/updataBook")
+    public ResponseEntity<Book> updateBook(@RequestBody Book book){
+        Book savedBook = bookService.updateBook(book);
+        return ResponseEntity.ok(savedBook);
     }
 
 
