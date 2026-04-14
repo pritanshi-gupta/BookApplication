@@ -33,8 +33,14 @@ public class BookController {
 
     @PutMapping("/updataBook")
     public ResponseEntity<Book> updateBook(@RequestBody Book book){
-        Book savedBook = bookService.updateBook(book);
-        return ResponseEntity.ok(savedBook);
+        Book updatedBook = bookService.updateBook(book);
+        return ResponseEntity.ok(updatedBook);
+    }
+
+    @DeleteMapping("/deleteBook/{id}")
+    public ResponseEntity<Book> deleteBook(@PathVariable("id") Integer id){
+          bookService.deleteBook(id);
+        return ResponseEntity.ok().build();
     }
 
 
