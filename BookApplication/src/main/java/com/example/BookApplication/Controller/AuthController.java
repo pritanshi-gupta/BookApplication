@@ -2,8 +2,8 @@ package com.example.BookApplication.Controller;
 
 
 import com.example.BookApplication.Entity.User;
+import com.example.BookApplication.Security.JwtUtil;
 import com.example.BookApplication.Service.UserService;
-import org.apache.coyote.Response;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -18,19 +18,21 @@ public class AuthController {
     private UserService service;
 
     @PostMapping("/signup")
-    public ResponseEntity<?> signup(@RequestBody User userRequest){
+    public ResponseEntity<?> signup(@RequestBody User userRequest) {
         User user = service.signup(userRequest);
         return ResponseEntity.ok(user);
     }
 
     @PostMapping("/login")
-    public String login(@RequestBody User user){
+    public String login(@RequestBody User user) {
         User existingUser = service.login(user.getUsername());
 
-        if(existingUser.getPassword().equals(user.getPassword())) {
-            return "Login Successful";
-        }
-        else{
+        if (existingUser.getPassword().equals(user.getPassword())) {
+
+            String token = JwtUtil.generateToken(user.getUsername());
+
+            return token;
+        } else {
             return "Invalid Password";
         }
     }
