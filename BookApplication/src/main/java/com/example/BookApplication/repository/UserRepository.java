@@ -1,7 +1,7 @@
-package com.example.BookApplication.Repository;
+package com.example.BookApplication.repository;
 
 
-import com.example.BookApplication.Entity.User;
+import com.example.BookApplication.entity.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.Optional;
